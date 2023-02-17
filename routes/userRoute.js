@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const con = require("");
+const con = require("../db");
 
 router.get("/", (req, res) =>{
     try{
@@ -15,7 +15,7 @@ router.get("/", (req, res) =>{
 });
 router.get("/:id", (req, res) =>{
     try{
-        con.query(`SELECT FROM Users WHERE id=${req.params.id}`, (err, results) =>{
+        con.query(`SELECT * FROM Users WHERE user_id=${req.params.id}`, (err, results) =>{
             if(err) throw err;
             res.send(results);
         });
@@ -59,7 +59,7 @@ router.put("/:id", (req, res) =>{
 });
 router.delete("/:id", (req, res) =>{
     try{
-        con.query(`DELETE FROM Users WHERE id = "${req.params.id}"`, (err, results) =>{
+        con.query(`DELETE FROM Users WHERE user_id = "${req.params.id}"`, (err, results) =>{
             if(err) throw err;
             res.send(results);
         });
@@ -68,5 +68,7 @@ router.delete("/:id", (req, res) =>{
         res.status(400).send(error)
     }
 });
+
+
 
 module.exports = router;

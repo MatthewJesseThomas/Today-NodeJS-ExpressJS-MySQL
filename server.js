@@ -12,12 +12,12 @@ let corsOption = {
 app.use(cors(corsOption));
 
 const userRouter = require('./routes/userRoute');
-// const productsRouter = require('./routes/productsRoute');
+const productsRouter = require('./routes/productRoute');
 // const loginRouter = require('./routes/loginRoute');
 // const registerRouter = require('./routes/registerRoute');
 
 app.use('/users', userRouter);
-// app.use('/products', productsRouter);
+app.use('/products', productsRouter);
 // app.use('/login', loginRouter);
 // app.use('/register', registerRouter);
 
