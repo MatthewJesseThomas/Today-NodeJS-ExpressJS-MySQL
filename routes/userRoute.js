@@ -35,7 +35,7 @@ router.post("/", (req, res) =>{
         res.status(400).send(error)
     }
 });
-router.patch("/", (req, res) =>{
+router.patch("/:id", (req, res) =>{
     try{
         con.query(`UPDATE Users SET full_name = "${req.body.full_name}", email = "${req.body.email}", user_password = "${req.body.user_password}", phone = "${req.body.phone}" WHERE user_id = ${req.params.id}`, (err, results) =>{
             if(err) throw err;
