@@ -35,7 +35,7 @@ router.post("/", (req, res) =>{
         res.status(400).send(error)
     }
 });
-router.patch("/", (req, res) =>{
+router.patch("/:id", (req, res) =>{
     try{
         con.query(`UPDATE Products SET product_name = "${req.body.product_name}","${req.body.price}","${req.body.Qty}"`, (err, results) =>{
             if(err) throw err;
